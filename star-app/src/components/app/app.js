@@ -1,47 +1,52 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Header from "../header";
-import RandomPlanet from "../random-planet";
+import Header from '../header';
+import RandomPlanet from '../random-planet';
+// import ErrorButton from '../error-button';
+import PeoplePage from '../people-page';
+import ErrorBoundry from "../error-boundry";
 
-import PeoplePage from "../peple-page/people-page";
-
-import "./app.css";
-import ErrorIndicator from "../error-indicator";
-import SwapiService from "../../services/swapi-services";
+import './app.css';
 
 export default class App extends Component {
-  swapiService = new SwapiService();
 
   state = {
-    showRandomPlanet: true,
-    selectedPerson: 5,
-    hasError: false,
+    showRandomPlanet: true
   };
 
-  onPersonSelected = (id) => {
-    this.setState({
-      selectedPerson: id,
+  toggleRandomPlanet = () => {
+    this.setState((state) => {
+      return {
+        showRandomPlanet: !state.showRandomPlanet
+      }
     });
   };
 
-  componentDidCatch() {
-    console.log("Component did Catch");
-    this.setState({ hasError: true });
-  }
-
   render() {
-    if (this.state.hasError) {
-      return <ErrorIndicator />;
-    }
+
+    const planet = this.state.showRandomPlanet ?
+      <RandomPlanet/> :
+      null;
 
     return (
-      <div className="container">
-        <Header />
-        <RandomPlanet />
+      <ErrorBoundry>
+        <div className="stardb-app container mb-3">
+          <Header />
+          { planet }
 
-        <PeoplePage />
+          <div className="row mb2 button-row">
+            {/* <button
+              className="toggle-planet btn btn-warning btn-lg"
+              onClick={this.toggleRandomPlanet}>
+              Toggle Random Planet
+            </button> */}
+            {/* <ErrorButton /> */}
+          </div>
 
-      </div>
+          <PeoplePage />
+
+        </div>
+      </ErrorBoundry>
     );
   }
 }
