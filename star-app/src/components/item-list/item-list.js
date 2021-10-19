@@ -22,7 +22,7 @@ const ItemList = (props) => {
   });
 
   return (
-    <ul className="item-list list-group">
+    <ul className="item-list mb-2 list-group">
       {items}
     </ul>
   );

@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-
-import ErrorButton from '../error-button/error-button';
-
 import './item-details.css';
 
 const Record = ({ item, field, label }) => {
@@ -61,7 +58,7 @@ export default class ItemDetails extends Component {
     const { name } = item;
 
     return (
-      <div className="item-details card">
+      <div className="item-details card mb-2">
         <img className="item-image"
           src={image}
           alt="item"/>
@@ -75,7 +72,6 @@ export default class ItemDetails extends Component {
               })
             }
           </ul>
-          <ErrorButton />
         </div>
       </div>
     );
