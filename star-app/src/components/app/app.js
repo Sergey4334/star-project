@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from '../header';
-import RandomPlanet from '../random-planet';
+//import RandomPlanet from '../random-planet';
 import ErrorBoundry from '../error-boundry';
 
 import Row from "../row/row";
@@ -28,9 +28,9 @@ export default class App extends Component {
 
   render() {
 
-    const planet = this.state.showRandomPlanet ?
-      <RandomPlanet/> :
-      null;
+    // const planet = this.state.showRandomPlanet ?
+    //   <RandomPlanet/> :
+    //   null;
 
     const { getPerson,
             getStarship,
@@ -51,7 +51,7 @@ export default class App extends Component {
 
     const starshipDetails = (
       <ItemDetails
-        itemId={7}
+        itemId={9}
         getData={getStarship}
         getImageUrl={getStarshipImage}>
 
